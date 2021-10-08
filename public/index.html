@@ -19,7 +19,46 @@
 </head>
 
 <body>
-   
+   <div style="width: 300px;">
+      <div id="dropdown-1"></div>
+   </div>
+
+   <script>
+      document.addEventListener('DOMContentLoaded', function (e) {
+         MisMis.dropdown({
+            element: document.getElementById('dropdown-1'),
+            data: [
+               { id: '1', title: 'Hasan', group: 'First Category' },
+               { id: '2', title: 'Reza', group: 'Secend Category' },
+               { id: '3', title: 'Naser', group: 'First Category' },
+               { id: '4', title: 'Kamran', group: 'Secend Category' },
+               { id: '5', title: 'Bahram', group: 'First Category' },
+               { id: '9', title: 'Hasan', group: 'First Category' },
+               { id: '7', title: 'Reza', group: 'Secend Category' },
+               { id: '8', title: 'Naser', group: 'First Category' },
+               { id: '9', title: 'Kamran', group: 'Secend Category' },
+               { id: '10', title: 'Bahram', group: 'First Category' },
+               { id: '11', title: 'Hasan', group: 'First Category' },
+               { id: '12', title: 'Reza', group: 'Secend Category' },
+               { id: '13', title: 'Naser', group: 'First Category' },
+               { id: '14', title: 'Kamran', group: 'Secend Category' },
+               { id: '15', title: 'Bahram', group: 'First Category' }
+            ],
+            dataIdFieldName: 'id',
+            dataGroupFieldName: 'group',
+            defaultValueId: 9,
+            placeHolder: 'Please Select',
+            search: true,
+            rtl: false,
+            onSelect: function (row) {
+               //console.log(row)
+            },
+            rowRender: ()=>{
+               return '<div class="row" data-row-id="{{id}}">{{title}}-CustomTemplate</div>';
+            }
+         });
+      })
+   </script>
 </body>
 
 </html>
