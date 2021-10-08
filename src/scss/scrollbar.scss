@@ -1,0 +1,110 @@
+$scrollbarColor: #a9a9a9;
+$scrollbarSize: 5pt;
+$scrollbarMargin: 5pt;
+
+.mismis.scrollbar {
+  user-select: none;
+
+  .scrollX,
+  .scrollY {
+    $thumbColor: darken($scrollbarColor, 20%);
+    $barColor: lighten($scrollbarColor, 20%);
+    position: relative;
+    overflow: hidden;
+    padding: 0;
+    height: 200px;
+    margin: 0;
+
+    > .scrollbarY,
+    .scrollbarX {
+      position: absolute;
+      border-radius: $scrollbarSize * 0.5;
+      cursor: pointer;
+      z-index: 1;
+      margin: $scrollbarMargin;
+      background: $barColor;
+
+      &.disabled {
+        display: none;
+      }
+
+      > .thumb {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: $scrollbarSize * 0.5;
+        background: rgba(red($thumbColor), green($thumbColor), blue($thumbColor), 0.75);
+        transition: background ease-in-out 150ms;
+      }
+
+      &:hover,
+      &.dragScrolling {
+        z-index: 2;
+
+        > .thumb {
+          background: rgba(
+            red(darken($thumbColor, 20%)),
+            green(darken($thumbColor, 20%)),
+            blue(darken($thumbColor, 20%)),
+            0.75
+          );
+        }
+      }
+    }
+
+    > .scrollbarY {
+      top: 0;
+      bottom: 0;
+      right: 0;
+      width: $scrollbarSize;
+    }
+
+    > .scrollbarX {
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: $scrollbarSize;
+    }
+
+    > .viewport {
+      box-sizing: content-box;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+
+      > .content {
+        box-sizing: content-box;
+      }
+    }
+  }
+
+  .scrollX.initialized > .viewport {
+    overflow-x: scroll;
+  }
+
+  .scrollY.initialized > .viewport {
+    overflow-y: scroll;
+  }
+
+  .scrollX.scrollY {
+    > .scrollbarX {
+      margin-right: $scrollbarMargin + $scrollbarSize;
+    }
+
+    > .scrollbarY {
+      margin-bottom: $scrollbarMargin + $scrollbarSize;
+    }
+  }
+
+  &.mismis-rtl {
+    .scrollX,
+    .scrollY {
+      > .scrollbarY {
+        right: unset;
+        left: 0;
+      }
+    }
+  }
+}
