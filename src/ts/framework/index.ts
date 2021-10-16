@@ -1,3 +1,5 @@
+import SortDirection from "../declartion/sort-direction";
+
 const Framework = {
    extend: (obj1: any, obj2: any) => {
       const result: any = { ...obj1 };
@@ -22,9 +24,9 @@ const Framework = {
       return template.content.firstChild as HTMLElement;
    },
    closest: (target: HTMLElement, selector: string) => {
-      while (target !== document.body) {
-         target = target.parentElement;
+      while (target != document.body) {
          if (target.matches(selector)) return target;
+         target = target.parentElement;
       }
       return null;
    },
@@ -38,7 +40,7 @@ const Framework = {
       }
       return null;
    },
-   addEventForChild: (parent: HTMLElement | Document, eventName: string, childSelector: string, callback: (e: Event, element: HTMLElement) => void) => {
+   addEventForChild: (parent: Element | HTMLElement | Document, eventName: string, childSelector: string, callback: (e: Event, element: HTMLElement) => void) => {
       parent.addEventListener(eventName, (e: Event) => {
          const target: any = e.target;
          if (!target) {
@@ -49,7 +51,28 @@ const Framework = {
             callback(e, matchingChild)
          }
       })
-   }
+   },
+   sortObjectArray: <T>(array: T[], filed: string, direction: SortDirection) => {
+      const result = [...array];
+      if (result && result.length && filed && direction) {
+         result.sort((a: T, b: T) => {
+            if (a[filed] < b[filed]) {
+               return direction == SortDirection.up ? -1 : 1;
+            }
+            if (a[filed] > b[filed]) {
+               return direction == SortDirection.up ? 1 : -1;
+            }
+            return 0;
+         })
+      }
+      return result;
+   },
+   addIndex: (data: object[]) => {
+      return data.map((item, index) => ({ ...item, index }));
+   },
+   addUUID: (data: object[]) => {
+      return data.map((item, index) => ({ ...item, uuid: Framework.createUUID() }));
+   },
 }
 
 export default Framework;

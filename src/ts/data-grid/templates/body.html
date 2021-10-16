@@ -1,0 +1,11 @@
+<div class="rows">
+   {{#rows}}
+   <div class="row {{#selected}}selected{{/selected}}" data-row-id="{{uuid}}">
+      {{#items}}
+      <div class="cell" {{#width}}style="width:{{width}}" {{/width}}>
+         {{value}}
+      </div>
+      {{/items}}
+   </div>
+   {{/rows}}
+</div>

@@ -1,14 +1,12 @@
-$bg-color: #f5f5f5;
-$header-bg-color: #dcdcdc;
-$hover_bg_color: #dcdcdc;
-$selected_bg_color: #328dc3;
-$search-border-color: #c1c1c1;
+@import 'theme.scss';
 
 .mismis.dropdown {
   width: 100%;
   height: 35px;
   background-color: $bg-color;
+  border: 1px solid $border-color;
   border-radius: 3px;
+  box-sizing: border-box;
 
   *:not(.search) {
     user-select: none;
@@ -27,6 +25,7 @@ $search-border-color: #c1c1c1;
     .arrow-down {
       width: 16px;
       cursor: pointer;
+      transform: rotate(180deg);
       // transition-property: transform;
       // transition-duration: 0.1s;
     }
@@ -39,9 +38,10 @@ $search-border-color: #c1c1c1;
     overflow: auto;
     border-bottom-left-radius: 3px;
     border-bottom-right-radius: 3px;
+    margin-top: 1px;
 
     .items {
-      padding: 0 20px 0 10px;
+      padding: 0 10px 0 10px;
 
       .row {
         padding: 7px 5px;
@@ -67,7 +67,7 @@ $search-border-color: #c1c1c1;
         width: calc(100% - 8px);
         height: 20px;
         border-radius: 3px;
-        border: 1px solid $search-border-color;
+        border: 1px solid $border-color;
         outline: none;
         padding: 3px;
       }
@@ -88,7 +88,7 @@ $search-border-color: #c1c1c1;
       border-bottom-right-radius: 0;
 
       .arrow-down {
-        transform: rotate(180deg);
+        transform: unset;
       }
     }
 
@@ -99,9 +99,10 @@ $search-border-color: #c1c1c1;
     }
   }
 
-  &.mismis-rtl {
+  &.rtl {
     direction: rtl;
 
+    
     .body {
       .items {
         padding: 0 10px 0 20px;

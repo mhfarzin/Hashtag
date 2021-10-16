@@ -9,6 +9,9 @@ class Scrollbar {
    uniqId: string;
    element: HTMLElement;
    content: string;
+   scrollX: boolean;
+   scrollY: boolean;
+   width: string;
    height: string;
    rtl: boolean;
    componentElement: HTMLElement;
@@ -16,7 +19,10 @@ class Scrollbar {
    constructor(config: ScrollbarConfig) {
       this.uniqId = Framework.createUUID();
       this.element = config.element;
-      this.content = config.content;
+      this.content = config.content || this.element.innerHTML;
+      this.scrollX = config.scrollX;
+      this.scrollY = config.scrollY;
+      this.width = config.width;
       this.height = config.height;
       this.rtl = config.rtl;
    }
@@ -25,6 +31,11 @@ class Scrollbar {
       const html = Mustache.render(scrollbar, {
          uniqId: this.uniqId,
          content: this.content,
+         scrollX: this.scrollX,
+         scrollY: this.scrollY,
+         width: this.width,
+         height: this.height,
+         //style: `${this.width ? ('max-width:' + this.width + ';') : ''} ${this.height ? ('max-height:' + this.height + ';') : ''}`,
          rtl: this.rtl
       });
       this.componentElement = Framework.htmlToElement(html);
@@ -35,8 +46,8 @@ class Scrollbar {
    static Initializer(config: ScrollbarConfig) {
       const scrollbar = new Scrollbar(config);
       scrollbar.createComponent();
-      new Scroll(scrollbar.componentElement.querySelector('.scrollX, .scrollY'), scrollbar.rtl);
-      return scrollbar.componentElement.outerHTML;
+      new Scroll(scrollbar.componentElement.querySelector('.scrollX, .scrollY'), scrollbar.height, scrollbar.rtl);
+      return scrollbar;
    }
 }
 

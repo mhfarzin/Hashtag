@@ -1,0 +1,87 @@
+@import "theme.scss";
+
+.mismis.pagging {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 35px;
+
+  *:not(.search) {
+    user-select: none;
+  }
+
+  .pages {
+    display: flex;
+
+    .body {
+      display: flex;
+    }
+
+    .page {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $header-bg-color;
+      width: 32px;
+      height: 32px;
+      margin: 0 5px;
+      border-radius: 16px;
+      cursor: pointer;
+
+      &.extend {
+        cursor: unset;
+      }
+
+      &.selected {
+        color: $selected-color;
+        background-color: $selected_bg_color;
+        cursor: unset;
+      }
+    }
+
+    .icon {
+      width: 16px;
+
+      &.first {
+        transform: rotate(-90deg);
+      }
+
+      &.back {
+        transform: rotate(-90deg);
+      }
+
+      &.next {
+        transform: rotate(90deg);
+      }
+
+      &.last {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  &.mismis-rtl {
+    direction: rtl;
+
+    .pages {
+      .icon {
+        &.first {
+          transform: rotate(+90deg);
+        }
+
+        &.back {
+          transform: rotate(+90deg);
+        }
+
+        &.next {
+          transform: rotate(-90deg);
+        }
+
+        &.last {
+          transform: rotate(-90deg);
+        }
+      }
+    }
+  }
+}

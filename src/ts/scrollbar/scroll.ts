@@ -4,6 +4,7 @@ export default class Scroll {
    el: HTMLElement;
    viewport: HTMLElement;
    content: HTMLElement;
+   height: string;
    rtl: boolean;
    scrollbarSize = 0;
    scrollbarTpl = '<div><div class="thumb"></div></div>';
@@ -20,8 +21,9 @@ export default class Scroll {
       left: -1
    };
 
-   constructor(el: HTMLElement, rtl: boolean) {
+   constructor(el: HTMLElement, height: string, rtl: boolean) {
       this.el = el;
+      this.height = height;
       this.rtl = rtl;
       this.viewport = el.querySelector(':scope > .viewport');
       this.content = this.viewport.querySelector(':scope > .content');
@@ -39,9 +41,10 @@ export default class Scroll {
       };
 
       const perform = function (vertical: boolean) {
-         var vocab = self.vocabulary(vertical);
-         var scrollSize = self.content['scroll' + vocab.sizeUpper];
-         var viewportSize = self.viewport ? self.viewport[vocab.size] : null;
+         const vocab = self.vocabulary(vertical);
+         const scrollSize = self.content['scroll' + vocab.sizeUpper];
+         const viewportSize = self.viewport ? self.viewport[vocab.size] : null;
+         
          if (scrollSize <= viewportSize) {
             if (self.scrollbar[vocab.axis]) {
                self.scrollbar[vocab.axis].classList.add('disabled');
@@ -54,20 +57,18 @@ export default class Scroll {
             }
          }
 
-         if (scroll[vocab.pos] !== self.lastScroll[vocab.pos]) {
-            self.lastScroll[vocab.pos] = scroll[vocab.pos];
-            const elSize = self.el[vocab.size];
+         self.lastScroll[vocab.pos] = scroll[vocab.pos];
+         const elSize = self.el[vocab.size];
 
-            const maxScrollSize = scrollSize - elSize;
-            const ratio = elSize / scrollSize;
-            const scrollRelative = scroll[vocab.pos] / maxScrollSize;
-            const thumbSize = ((ratio > 1) ? 1 : ratio) * elSize;
-            const scrollbarSize = self.scrollbar[vocab.axis][vocab.size];
+         const maxScrollSize = scrollSize - elSize;
+         const ratio = elSize / scrollSize;
+         const scrollRelative = scroll[vocab.pos] / maxScrollSize;
+         const thumbSize = ((ratio > 1) ? 1 : ratio) * elSize;
+         const scrollbarSize = self.scrollbar[vocab.axis] ? self.scrollbar[vocab.axis][vocab.size] : 0;
 
-            if (self.thumb[vocab.axis]) {
-               self.thumb[vocab.axis].style[vocab.setSize] = thumbSize + 'px';
-               self.thumb[vocab.axis].style[vocab.pos] = (scrollRelative * (scrollbarSize - thumbSize)) + 'px';
-            }
+         if (self.thumb[vocab.axis]) {
+            self.thumb[vocab.axis].style[vocab.setSize] = thumbSize + 'px';
+            self.thumb[vocab.axis].style[vocab.stylePos] = Math.abs((scrollRelative * (scrollbarSize - thumbSize))) + 'px';
          }
       }
       perform(true);
@@ -79,6 +80,7 @@ export default class Scroll {
          axis: vertical ? 'y' : 'x',
          axisUpper: vertical ? 'Y' : 'X',
          pos: vertical ? 'top' : 'left',
+         stylePos: vertical ? 'top' : ( this.rtl ? 'right' : 'left'),
          posUpper: vertical ? 'Top' : 'Left',
          size: vertical ? 'offsetHeight' : 'offsetWidth',
          setSize: vertical ? 'height' : 'width',
@@ -99,7 +101,7 @@ export default class Scroll {
          self.update();
       });
 
-      var setupOrientation = function (vertical: boolean) {
+      const setupOrientation = (vertical: boolean) => {
          const vocab = self.vocabulary(vertical);
          self.scrollbar[vocab.axis]?.click((e: Event) => {
             if (Framework.eventChildOf(e, self.scrollbar[vocab.axis])) {
@@ -158,18 +160,18 @@ export default class Scroll {
 
    init() {
       if (this.el.classList.contains('scrollX')) {
-         this.viewport.style.paddingTop = this.scrollbarSize + 'px';
-         this.viewport.style.paddingBottom = (-this.scrollbarSize) + 'px';
+         this.viewport.style.paddingBottom = (this.scrollbarSize * 2) + 'px';
+         this.viewport.style.marginBottom = (-this.scrollbarSize) + 'px';
          this.content.style.marginBottom = (-this.scrollbarSize) + 'px';
          const scrollbarTplElement = Framework.htmlToElement(this.scrollbarTpl);
          scrollbarTplElement.classList.add('scrollbarX');
-         this.el.insertAdjacentElement('beforebegin', scrollbarTplElement);
+         this.el.insertAdjacentElement('afterbegin', scrollbarTplElement);
       }
       if (this.el.classList.contains('scrollY')) {
-         this.viewport.style[this.rtl ? 'paddingLeft' : 'paddingRight'] = this.scrollbarSize + 'px';
+         this.viewport.style[this.rtl ? 'paddingLeft' : 'paddingRight'] = (this.scrollbarSize * 2) + 'px';
          this.viewport.style[this.rtl ? 'marginLeft' : 'marginRight'] = (-this.scrollbarSize) + 'px';
          this.content.style[this.rtl ? 'marginLeft' : 'marginRight'] = (-this.scrollbarSize) + 'px';
-         var scrollbarTplElement = Framework.htmlToElement(this.scrollbarTpl);
+         const scrollbarTplElement = Framework.htmlToElement(this.scrollbarTpl);
          scrollbarTplElement.classList.add('scrollbarY');
          this.el.insertAdjacentElement('afterbegin', scrollbarTplElement)
       }

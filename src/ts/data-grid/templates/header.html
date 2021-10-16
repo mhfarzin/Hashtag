@@ -1,0 +1,18 @@
+<div class="columns">
+   {{#columns}}
+   <div class="column" data-filed="{{field}}" {{#width}}style="width:{{width}}" {{/width}}>
+      <div class="title">
+         {{title}}
+      </div>
+      <div class="actions">
+         {{#sort}}
+         <div class="arrow-icons">
+            <img src="{{arrowIconUrl}}" class="action arrow-up" />
+            <img src="{{arrowIconUrl}}" class="action arrow-down" />
+         </div>
+         {{/sort}}
+      </div>
+      <div class="splite"></div>
+   </div>
+   {{/columns}}
+</div>

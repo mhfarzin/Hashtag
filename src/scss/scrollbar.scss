@@ -7,16 +7,17 @@ $scrollbarMargin: 5pt;
 
   .scrollX,
   .scrollY {
+    display: flex;
     $thumbColor: darken($scrollbarColor, 20%);
     $barColor: lighten($scrollbarColor, 20%);
     position: relative;
     overflow: hidden;
     padding: 0;
-    height: 200px;
+    height: auto;
     margin: 0;
 
     > .scrollbarY,
-    .scrollbarX {
+    > .scrollbarX {
       position: absolute;
       border-radius: $scrollbarSize * 0.5;
       cursor: pointer;
@@ -58,6 +59,7 @@ $scrollbarMargin: 5pt;
       top: 0;
       bottom: 0;
       right: 0;
+      width: auto;
       width: $scrollbarSize;
     }
 
@@ -65,13 +67,15 @@ $scrollbarMargin: 5pt;
       bottom: 0;
       left: 0;
       right: 0;
+      height: auto;
       height: $scrollbarSize;
     }
 
     > .viewport {
       box-sizing: content-box;
       width: 100%;
-      height: 100%;
+      height: auto;
+      max-height: 100%;
       overflow: hidden;
 
       > .content {
@@ -99,11 +103,20 @@ $scrollbarMargin: 5pt;
   }
 
   &.mismis-rtl {
+    direction: rtl;
+
     .scrollX,
     .scrollY {
       > .scrollbarY {
         right: unset;
         left: 0;
+      }
+
+      > .scrollbarX {
+        > .thumb {
+          left: unset;
+          right: 0;
+        }
       }
     }
   }

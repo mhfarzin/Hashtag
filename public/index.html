@@ -9,54 +9,195 @@
    <style>
       body {
          display: flex;
+         flex-direction: column;
          justify-content: center;
          align-items: center;
          background-color: #fff;
          height: 100vh;
          margin: 0;
       }
+
+      body>div {
+         margin: 30px;
+      }
    </style>
 </head>
 
 <body>
+   <div style="width: 70%;">
+      <div id="data-grid-1"></div>
+   </div>
+
+   <div style="width: 500px;">
+      <div id="pagging-1"></div>
+   </div>
+
    <div style="width: 300px;">
       <div id="dropdown-1"></div>
    </div>
 
+   <!-- <div style="width: 300px;">
+      <div id="scroll-1">
+         <div style="width: 500px;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum ultrices molestie. In lobortis sed
+            nulla id suscipit. Aliquam ullamcorper interdum odio ut tincidunt. Donec rutrum id diam nec maximus. Sed
+            massa
+            purus, facilisis ac aliquet vel, lobortis eu purus. Etiam condimentum purus vitae facilisis egestas. Cras
+            nec
+            hendrerit eros. Cras sed posuere felis. Mauris at aliquam nisi. Phasellus vitae nulla hendrerit, finibus
+            velit
+            eu, aliquam dui. Aliquam venenatis aliquet elit, eget venenatis ante tincidunt id. Donec tincidunt consequat
+            finibus.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum ultrices molestie. In lobortis sed
+            nulla id suscipit. Aliquam ullamcorper interdum odio ut tincidunt. Donec rutrum id diam nec maximus. Sed
+            massa
+            purus, facilisis ac aliquet vel, lobortis eu purus. Etiam condimentum purus vitae facilisis egestas. Cras
+            nec
+            hendrerit eros. Cras sed posuere felis. Mauris at aliquam nisi. Phasellus vitae nulla hendrerit, finibus
+            velit
+            eu, aliquam dui. Aliquam venenatis aliquet elit, eget venenatis ante tincidunt id. Donec tincidunt consequat
+            finibus.
+         </div>
+      </div>
+   </div> -->
+
+   <!--  <div style="width: 300px;">
+      <div id="scroll-2">
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum ultrices molestie. In lobortis sed
+         nulla id suscipit. Aliquam ullamcorper interdum odio ut tincidunt. Donec rutrum id diam nec maximus. Sed
+         massa
+         purus, facilisis ac aliquet vel, lobortis eu purus. Etiam condimentum purus vitae facilisis egestas. Cras
+         nec
+         hendrerit eros. Cras sed posuere felis. Mauris at aliquam nisi. Phasellus vitae nulla hendrerit, finibus
+         velit
+         eu, aliquam dui. Aliquam venenatis aliquet elit, eget venenatis ante tincidunt id. Donec tincidunt consequat
+         finibus.
+      </div>
+   </div>-->
+
+   <!--<div style="width: 300px;">
+      <div id="scroll-3">
+         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum ultrices molestie. In lobortis sed
+         nulla id suscipit. Aliquam ullamcorper interdum odio ut tincidunt. Donec rutrum id diam nec maximus. Sed
+         massa
+         purus, facilisis ac aliquet vel, lobortis eu purus. Etiam condimentum purus vitae facilisis egestas. Cras
+         nec
+         hendrerit eros. Cras sed posuere felis. Mauris at aliquam nisi. Phasellus vitae nulla hendrerit, finibus
+         velit
+         eu, aliquam dui. Aliquam venenatis aliquet elit, eget venenatis ante tincidunt id. Donec tincidunt consequat
+         finibus.
+      </div>
+   </div> -->
+
    <script>
       document.addEventListener('DOMContentLoaded', function (e) {
-         MisMis.dropdown({
-            element: document.getElementById('dropdown-1'),
-            data: [
-               { id: '1', title: 'Hasan', group: 'First Category' },
-               { id: '2', title: 'Reza', group: 'Secend Category' },
-               { id: '3', title: 'Naser', group: 'First Category' },
-               { id: '4', title: 'Kamran', group: 'Secend Category' },
-               { id: '5', title: 'Bahram', group: 'First Category' },
-               { id: '9', title: 'Hasan', group: 'First Category' },
-               { id: '7', title: 'Reza', group: 'Secend Category' },
-               { id: '8', title: 'Naser', group: 'First Category' },
-               { id: '9', title: 'Kamran', group: 'Secend Category' },
-               { id: '10', title: 'Bahram', group: 'First Category' },
-               { id: '11', title: 'Hasan', group: 'First Category' },
-               { id: '12', title: 'Reza', group: 'Secend Category' },
-               { id: '13', title: 'Naser', group: 'First Category' },
-               { id: '14', title: 'Kamran', group: 'Secend Category' },
-               { id: '15', title: 'Bahram', group: 'First Category' }
+         MisMis.dataGrid({
+            element: document.getElementById('data-grid-1'),
+            columns: [
+               { field: 'id', title: 'Id', width: '20%', filter: true, sort: true },
+               { field: 'name', title: 'Name', width: '20%', filter: true, sort: true },
+               { field: 'family', title: 'Family', width: '20%', filter: true, sort: true },
+               { field: 'age', title: 'Age', width: '20%', filter: true, sort: true },
+               { field: 'city', title: 'City', width: '20%', filter: true, sort: true },
             ],
-            dataIdFieldName: 'id',
-            dataGroupFieldName: 'group',
-            defaultValueId: 9,
-            placeHolder: 'Please Select',
-            search: true,
-            rtl: false,
-            onSelect: function (row) {
-               //console.log(row)
-            },
-            rowRender: ()=>{
-               return '<div class="row" data-row-id="{{id}}">{{title}}-CustomTemplate</div>';
-            }
+            data: [
+               { id: 1, name: 'Negin', family: 'Ahmadi', age: 30, city: 'Tehran' },
+               { id: 2, name: 'Keyvan', family: 'Ahmadi', age: 35, city: 'Esfehan' },
+               { id: 3, name: 'Kaveh', family: 'Ahmadi', age: 25, city: 'Shiraz' },
+               { id: 4, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
+               { id: 5, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
+               { id: 6, name: 'Negin', family: 'Ahmadi', age: 30, city: 'Tehran' },
+               { id: 7, name: 'Keyvan', family: 'Ahmadi', age: 35, city: 'Esfehan' },
+               { id: 8, name: 'Kaveh', family: 'Ahmadi', age: 25, city: 'Shiraz' },
+               { id: 9, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
+               { id: 10, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
+               { id: 11, name: 'Negin', family: 'Ahmadi', age: 30, city: 'Tehran' },
+               { id: 12, name: 'Keyvan', family: 'Ahmadi', age: 35, city: 'Esfehan' },
+               { id: 13, name: 'Kaveh', family: 'Ahmadi', age: 25, city: 'Shiraz' },
+               { id: 14, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
+               { id: 15, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
+               { id: 16, name: 'Negin', family: 'Ahmadi', age: 30, city: 'Tehran' },
+               { id: 17, name: 'Keyvan', family: 'Ahmadi', age: 35, city: 'Esfehan' },
+               { id: 18, name: 'Kaveh', family: 'Ahmadi', age: 25, city: 'Shiraz' },
+               { id: 19, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
+               { id: 20, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
+               { id: 21, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
+               { id: 22, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
+            ],
+            rtl: true,
          });
+
+         // MisMis.pagging({
+         //    element: document.getElementById('pagging-1'),
+         //    count: 105,
+         //    size: 10,
+         //    rtl: false,
+         //    countPageShow: 3,
+         //    hidePrevNext: false,
+         //    hideFirstLast: false,
+         //    hideExtend: true,
+         //    onChange: function(page){
+         //       console.log(page);
+         //    }
+         // });
+
+         // MisMis.dropdown({
+         //    element: document.getElementById('dropdown-1'),
+         //    data: [
+         //       { id: '1', title: 'Hasan', group: 'First Category' },
+         //       { id: '2', title: 'Reza', group: 'Secend Category' },
+         //       { id: '3', title: 'Naser', group: 'First Category' },
+         //       { id: '4', title: 'Kamran', group: 'Secend Category' },
+         //       { id: '5', title: 'Bahram', group: 'First Category' },
+         //       { id: '9', title: 'Hasan', group: 'First Category' },
+         //       { id: '7', title: 'Reza', group: 'Secend Category' },
+         //       { id: '8', title: 'Naser', group: 'First Category' },
+         //       { id: '9', title: 'Kamran', group: 'Secend Category' },
+         //       { id: '10', title: 'Bahram', group: 'First Category' },
+         //       { id: '11', title: 'Hasan', group: 'First Category' },
+         //       { id: '12', title: 'Reza', group: 'Secend Category' },
+         //       { id: '13', title: 'Naser', group: 'First Category' },
+         //       { id: '14', title: 'Kamran', group: 'Secend Category' },
+         //       { id: '15', title: 'Bahram', group: 'First Category' }
+         //    ],
+         //    defaultValueId: '9',
+         //    placeHolder: 'Please Select',
+         //    search: true,
+         //    rtl: false   ,
+         //    onSelect: function (row) {
+         //       //console.log(row)
+         //    },
+         //    rowRender: () => {
+         //       return '<div class="row" data-row-id="{{id}}">{{title}}-CustomTemplate-Test For Scroll X - It is final test</div>';
+         //    }
+         // });
+
+
+         // MisMis.scrollbar({
+         //    element: document.getElementById('scroll-1'),
+         //    scrollX: true,
+         //    scrollY: false,
+         //    //width: '1000px',
+         //    //height: '250px',
+         //    rtl: false,
+         // });
+
+         // MisMis.scrollbar({
+         //    element: document.getElementById('scroll-2'),
+         //    scrollX: false,
+         //    scrollY: true,
+         //    height: '100px',
+         //    rtl: false,
+         // });
+
+         // MisMis.scrollbar({
+         //    element: document.getElementById('scroll-3'),
+         //    scrollX: true,
+         //    scrollY: true,
+         //    width: '300px',
+         //    height: '100px',
+         //    rtl: false,
+         // });
       })
    </script>
 </body>

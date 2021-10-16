@@ -7,6 +7,6 @@ export default interface DropdownConfig {
    placeHolder?: string,
    search?: boolean,
    rtl?: boolean,
-   onSelect?: (row: object) => void
+   onSelect?: (row: DropdownData) => void
    rowRender?: () => string,
 }

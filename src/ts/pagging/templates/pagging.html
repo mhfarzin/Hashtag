@@ -1,0 +1,25 @@
+<div class="mismis pagging {{#rtl}}mismis-rtl{{/rtl}}" data-uniq-id={{uniqId}}>
+     <div class="pages">
+          {{^hideFirstLast}}
+          <div class="page default" data-action="first">
+               <img src="{{tinyDoubleArrowIconUrl}}" class="icon first" />
+          </div>
+          {{/hideFirstLast}}
+          {{^hidePrevNext}}
+          <div class="page default" data-action="back">
+               <img src="{{tinyArrowIconUrl}}" class="icon back" />
+          </div>
+          {{/hidePrevNext}}
+          <div class="body"></div>
+          {{^hidePrevNext}}
+          <div class="page default" data-action="next">
+               <img src="{{tinyArrowIconUrl}}" class="icon next" />
+          </div>
+          {{/hidePrevNext}}
+          {{^hideFirstLast}}
+          <div class="page default" data-action="last">
+               <img src="{{tinyDoubleArrowIconUrl}}" class="icon last" />
+          </div>
+          {{/hideFirstLast}}
+     </div>
+</div>

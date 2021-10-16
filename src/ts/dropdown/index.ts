@@ -1,11 +1,11 @@
 import DropdownConfig from '../declartion/dropdown-config';
 import Mustache from 'mustache';
 import dropdown from './templates/dropdown.html';
-import Header from './templates/header.html';
-import Search from './templates/search.html';
-import Row from './templates/row.html';
-import Items from './templates/items.html';
-import arrowDown from '../../asset/image/arrow-down.svg';
+import header from './templates/header.html';
+import search from './templates/search.html';
+import row from './templates/row.html';
+import items from './templates/items.html';
+import arrow from '../../asset/image/arrow.svg';
 import clear from '../../asset/image/clear.svg';
 import Framework from '../framework/index';
 import DropdownData from '../declartion/dropdown-data';
@@ -60,16 +60,16 @@ class DropDown {
    }
 
    createComponent() {
-      var html = Mustache.render(dropdown, {
+      const html = Mustache.render(dropdown, {
          uniqId: this.uniqId,
          placeHolder: this.placeHolder,
          rtl: this.rtl,
          search: this.search,
-         arrowDownIconUrl: arrowDown,
+         arrowIconUrl: arrow,
          clearIconUrl: clear
       }, {
-         header: Header,
-         search: Search
+         header: header,
+         search: search
       });
       this.componentElement = Framework.htmlToElement(html);
       this.getBody();
@@ -79,22 +79,24 @@ class DropDown {
 
    getBody() {
       const data = this.data.filter(x => !this.filter || x.title.toLowerCase().includes(this.filter.toLowerCase()));
-      var items = Mustache.render(Items, {
+      const htmlItems = Mustache.render(items, {
          items: data
       }, {
-         row: this.rowRender ? this.rowRender() : Row
+         row: this.rowRender ? this.rowRender() : row
       });
 
       return Scrollbar({
          element: this.componentElement.querySelector('.body > div:not(.search-container)'),
-         content: items,
+         content: htmlItems,
+         scrollX: false,
+         scrollY: true,
          height: '200px',
          rtl: this.rtl
       });
    }
 
    bindEvents() {
-      var self = this;
+      const self = this;
 
       this.componentElement.querySelector('.arrow-down').addEventListener('click', (e) => {
          self.popup(this.popupState != PopupState.Open);
@@ -140,9 +142,7 @@ class DropDown {
          this.componentElement.classList.remove('open');
          this.popupState = PopupState.Close;
       }
-      this.componentElement.querySelectorAll('.body *').forEach(x => {
-         x.dispatchEvent(new Event('resize'))
-      });
+      this.componentElement.querySelector('.body .items').dispatchEvent(new Event('resize', { bubbles: true }))
    }
 
    selectItem(id: string) {
@@ -156,14 +156,14 @@ class DropDown {
    }
 
    static Initializer(config: DropdownConfig) {
-      var dropDown = new DropDown(config);
+      const dropDown = new DropDown(config);
       if (!dropDown.validate()) {
          return;
       }
       dropDown.createComponent();
       dropDown.selectItem(config.defaultValueId);
       dropDown.bindEvents();
-      return dropDown.componentElement.outerHTML;
+      return dropDown;
    }
 }
 
