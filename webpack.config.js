@@ -9,7 +9,7 @@ module.exports = {
     entry: ['./src/ts/index.ts'],
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: mode ? 'mismis.min.js' : 'mismis.js',
+        filename: mode ? 'hashtag.min.js' : 'hashtag.js',
         publicPath: "/"
     },
     resolve: {
@@ -20,7 +20,7 @@ module.exports = {
             template: path.join(__dirname, './public/index.html'),
         }),
         new MiniCssExtractPlugin({
-            filename:  mode ? 'mismis.min.css' : 'mismis.css'
+            filename:  mode ? 'hashtag.min.css' : 'hashtag.css'
         })
     ],
     optimization: {

@@ -1,6 +1,6 @@
 @import "theme.scss";
 
-.mismis.pagging {
+.hashtag.pagging {
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -61,7 +61,7 @@
     }
   }
 
-  &.mismis-rtl {
+  &.hashtag-rtl {
     direction: rtl;
 
     .pages {

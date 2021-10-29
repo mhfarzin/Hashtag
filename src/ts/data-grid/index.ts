@@ -61,8 +61,8 @@ class DataGrid {
       this.createDropDown();
 
       return Scrollbar({
-         element: this.componentElement.querySelector('.mismis.data-grid > .data-grid-content'),
-         content: this.componentElement.querySelector('.mismis.data-grid > .data-grid-content').innerHTML,
+         element: this.componentElement.querySelector('.hashtag.data-grid > .data-grid-content'),
+         content: this.componentElement.querySelector('.hashtag.data-grid > .data-grid-content').innerHTML,
          scrollX: true,
          scrollY: false,
          rtl: this.rtl

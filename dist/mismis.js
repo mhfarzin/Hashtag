@@ -13,7 +13,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 // Module
-var code = "<div class=\"mismis dropdown {{#rtl}}mismis-rtl{{/rtl}}\"  data-uniq-id=\"{{uniqId}}\" >\r\n  {{> header}}\r\n  <div class=\"body\">\r\n    {{#search}}\r\n    {{> search}}\r\n    {{/search}}\r\n    <div class=\"mismis scrollbar\"></div>\r\n  </div>\r\n</div>";
+var code = "<div class=\"hashtag dropdown {{#rtl}}hashtag-rtl{{/rtl}}\"  data-uniq-id=\"{{uniqId}}\" >\r\n  {{> header}}\r\n  <div class=\"body\">\r\n    {{#search}}\r\n    {{> search}}\r\n    {{/search}}\r\n    <div class=\"hashtag scrollbar\"></div>\r\n  </div>\r\n</div>";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
@@ -103,7 +103,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 // Module
-var code = "<div class=\"mismis scrollbar {{#rtl}}mismis-rtl{{/rtl}}\" data-uniq-id={{uniqId}}>\r\n\t<ul class=\"scrollY myScroll\">\r\n\t\t<div class=\"viewport\">\r\n\t\t\t<div class=\"content\">\r\n\t\t\t\t{{{content}}}\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</ul>\r\n</div>";
+var code = "<div class=\"hashtag scrollbar {{#rtl}}hashtag-rtl{{/rtl}}\" data-uniq-id={{uniqId}}>\r\n\t<ul class=\"scrollY myScroll\">\r\n\t\t<div class=\"viewport\">\r\n\t\t\t<div class=\"content\">\r\n\t\t\t\t{{{content}}}\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</ul>\r\n</div>";
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (code);
 
@@ -1516,11 +1516,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _dropdown_index__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dropdown/index */ "./src/ts/dropdown/index.ts");
 
 
-var MisMis = {
+var Hashtag = {
     dropdown: _dropdown_index__WEBPACK_IMPORTED_MODULE_1__["default"],
     scrollbar: _scrollbar_index__WEBPACK_IMPORTED_MODULE_0__["default"]
 };
-window['MisMis'] = MisMis;
+window['Hashtag'] = Hashtag;
 
 })();
 

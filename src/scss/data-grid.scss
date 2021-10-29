@@ -1,6 +1,6 @@
 @import "theme.scss";
 
-.mismis.data-grid {
+.hashtag.data-grid {
    width: 100%;
    background-color: $bg-color;
    border-radius: 3px;
@@ -128,7 +128,7 @@
       .page-size {
          flex: 0.1;
 
-         .mismis.dropdown {
+         .hashtag.dropdown {
             .body {
                margin-top: 6px;
             }
@@ -136,7 +136,7 @@
       }
    }
 
-   &.mismis-rtl {
+   &.hashtag-rtl {
       direction: rtl;
 
       .columns {

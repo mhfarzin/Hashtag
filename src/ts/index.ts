@@ -2,19 +2,22 @@ import Scrollbar from './scrollbar/index';
 import Dropdown from './dropdown/index';
 import DataGrid from './data-grid/index';
 import Pagging from './pagging/index';
+import Slider from './slider/index';
 
-interface IMisMis {
+interface IHashtag {
    dropdown: any,
    scrollbar: any,
    pagging: any,
-   dataGrid: any
+   dataGrid: any,
+   slider: any
 }
 
-const MisMis: IMisMis = {
+const Hashtag: IHashtag = {
    dropdown: Dropdown,
    scrollbar: Scrollbar,
    pagging: Pagging,
-   dataGrid: DataGrid
+   dataGrid: DataGrid,
+   slider: Slider
 };
 
-(window as any)['MisMis'] = MisMis;
+(window as any)['Hashtag'] = Hashtag;

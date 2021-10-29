@@ -2,7 +2,7 @@ $scrollbarColor: #a9a9a9;
 $scrollbarSize: 5pt;
 $scrollbarMargin: 5pt;
 
-.mismis.scrollbar {
+.hashtag.scrollbar {
   user-select: none;
 
   .scrollX,
@@ -102,7 +102,7 @@ $scrollbarMargin: 5pt;
     }
   }
 
-  &.mismis-rtl {
+  &.hashtag-rtl {
     direction: rtl;
 
     .scrollX,

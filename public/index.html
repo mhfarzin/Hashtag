@@ -4,7 +4,7 @@
 <head>
    <meta charset='utf-8'>
    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-   <title>MisMis</title>
+   <title>Hashtag Js</title>
    <meta name='viewport' content='width=device-width, initial-scale=1'>
    <style>
       body {
@@ -34,6 +34,10 @@
 
    <div style="width: 300px;">
       <div id="dropdown-1"></div>
+   </div>
+
+   <div style="width: 300px;">
+      <div id="slider-1"></div>
    </div>
 
    <!-- <div style="width: 300px;">
@@ -91,43 +95,43 @@
 
    <script>
       document.addEventListener('DOMContentLoaded', function (e) {
-         MisMis.dataGrid({
-            element: document.getElementById('data-grid-1'),
-            columns: [
-               { field: 'id', title: 'Id', width: '20%', filter: true, sort: true },
-               { field: 'name', title: 'Name', width: '20%', filter: true, sort: true },
-               { field: 'family', title: 'Family', width: '20%', filter: true, sort: true },
-               { field: 'age', title: 'Age', width: '20%', filter: true, sort: true },
-               { field: 'city', title: 'City', width: '20%', filter: true, sort: true },
-            ],
-            data: [
-               { id: 1, name: 'Negin', family: 'Ahmadi', age: 30, city: 'Tehran' },
-               { id: 2, name: 'Keyvan', family: 'Ahmadi', age: 35, city: 'Esfehan' },
-               { id: 3, name: 'Kaveh', family: 'Ahmadi', age: 25, city: 'Shiraz' },
-               { id: 4, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
-               { id: 5, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
-               { id: 6, name: 'Negin', family: 'Ahmadi', age: 30, city: 'Tehran' },
-               { id: 7, name: 'Keyvan', family: 'Ahmadi', age: 35, city: 'Esfehan' },
-               { id: 8, name: 'Kaveh', family: 'Ahmadi', age: 25, city: 'Shiraz' },
-               { id: 9, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
-               { id: 10, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
-               { id: 11, name: 'Negin', family: 'Ahmadi', age: 30, city: 'Tehran' },
-               { id: 12, name: 'Keyvan', family: 'Ahmadi', age: 35, city: 'Esfehan' },
-               { id: 13, name: 'Kaveh', family: 'Ahmadi', age: 25, city: 'Shiraz' },
-               { id: 14, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
-               { id: 15, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
-               { id: 16, name: 'Negin', family: 'Ahmadi', age: 30, city: 'Tehran' },
-               { id: 17, name: 'Keyvan', family: 'Ahmadi', age: 35, city: 'Esfehan' },
-               { id: 18, name: 'Kaveh', family: 'Ahmadi', age: 25, city: 'Shiraz' },
-               { id: 19, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
-               { id: 20, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
-               { id: 21, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
-               { id: 22, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
-            ],
-            rtl: true,
-         });
+         // Hashtag.dataGrid({
+         //    element: document.getElementById('data-grid-1'),
+         //    columns: [
+         //       { field: 'id', title: 'Id', width: '20%', filter: true, sort: true },
+         //       { field: 'name', title: 'Name', width: '20%', filter: true, sort: true },
+         //       { field: 'family', title: 'Family', width: '20%', filter: true, sort: true },
+         //       { field: 'age', title: 'Age', width: '20%', filter: true, sort: true },
+         //       { field: 'city', title: 'City', width: '20%', filter: true, sort: true },
+         //    ],
+         //    data: [
+         //       { id: 1, name: 'Negin', family: 'Ahmadi', age: 30, city: 'Tehran' },
+         //       { id: 2, name: 'Keyvan', family: 'Ahmadi', age: 35, city: 'Esfehan' },
+         //       { id: 3, name: 'Kaveh', family: 'Ahmadi', age: 25, city: 'Shiraz' },
+         //       { id: 4, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
+         //       { id: 5, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
+         //       { id: 6, name: 'Negin', family: 'Ahmadi', age: 30, city: 'Tehran' },
+         //       { id: 7, name: 'Keyvan', family: 'Ahmadi', age: 35, city: 'Esfehan' },
+         //       { id: 8, name: 'Kaveh', family: 'Ahmadi', age: 25, city: 'Shiraz' },
+         //       { id: 9, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
+         //       { id: 10, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
+         //       { id: 11, name: 'Negin', family: 'Ahmadi', age: 30, city: 'Tehran' },
+         //       { id: 12, name: 'Keyvan', family: 'Ahmadi', age: 35, city: 'Esfehan' },
+         //       { id: 13, name: 'Kaveh', family: 'Ahmadi', age: 25, city: 'Shiraz' },
+         //       { id: 14, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
+         //       { id: 15, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
+         //       { id: 16, name: 'Negin', family: 'Ahmadi', age: 30, city: 'Tehran' },
+         //       { id: 17, name: 'Keyvan', family: 'Ahmadi', age: 35, city: 'Esfehan' },
+         //       { id: 18, name: 'Kaveh', family: 'Ahmadi', age: 25, city: 'Shiraz' },
+         //       { id: 19, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
+         //       { id: 20, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
+         //       { id: 21, name: 'Homa', family: 'Ahmadi', age: 27, city: 'Mashhad' },
+         //       { id: 22, name: 'Pedram', family: 'Ahmadi', age: 36, city: 'Kerman' },
+         //    ],
+         //    rtl: true,
+         // });
 
-         // MisMis.pagging({
+         // Hashtag.pagging({
          //    element: document.getElementById('pagging-1'),
          //    count: 105,
          //    size: 10,
@@ -141,39 +145,39 @@
          //    }
          // });
 
-         // MisMis.dropdown({
-         //    element: document.getElementById('dropdown-1'),
-         //    data: [
-         //       { id: '1', title: 'Hasan', group: 'First Category' },
-         //       { id: '2', title: 'Reza', group: 'Secend Category' },
-         //       { id: '3', title: 'Naser', group: 'First Category' },
-         //       { id: '4', title: 'Kamran', group: 'Secend Category' },
-         //       { id: '5', title: 'Bahram', group: 'First Category' },
-         //       { id: '9', title: 'Hasan', group: 'First Category' },
-         //       { id: '7', title: 'Reza', group: 'Secend Category' },
-         //       { id: '8', title: 'Naser', group: 'First Category' },
-         //       { id: '9', title: 'Kamran', group: 'Secend Category' },
-         //       { id: '10', title: 'Bahram', group: 'First Category' },
-         //       { id: '11', title: 'Hasan', group: 'First Category' },
-         //       { id: '12', title: 'Reza', group: 'Secend Category' },
-         //       { id: '13', title: 'Naser', group: 'First Category' },
-         //       { id: '14', title: 'Kamran', group: 'Secend Category' },
-         //       { id: '15', title: 'Bahram', group: 'First Category' }
-         //    ],
-         //    defaultValueId: '9',
-         //    placeHolder: 'Please Select',
-         //    search: true,
-         //    rtl: false   ,
-         //    onSelect: function (row) {
-         //       //console.log(row)
-         //    },
-         //    rowRender: () => {
-         //       return '<div class="row" data-row-id="{{id}}">{{title}}-CustomTemplate-Test For Scroll X - It is final test</div>';
-         //    }
-         // });
+         Hashtag.dropdown({
+            element: document.getElementById('dropdown-1'),
+            data: [
+               { id: '1', title: 'Hasan', group: 'First Category' },
+               { id: '2', title: 'Reza', group: 'Secend Category' },
+               { id: '3', title: 'Naser', group: 'First Category' },
+               { id: '4', title: 'Kamran', group: 'Secend Category' },
+               { id: '5', title: 'Bahram', group: 'First Category' },
+               { id: '9', title: 'Hasan', group: 'First Category' },
+               { id: '7', title: 'Reza', group: 'Secend Category' },
+               { id: '8', title: 'Naser', group: 'First Category' },
+               { id: '9', title: 'Kamran', group: 'Secend Category' },
+               { id: '10', title: 'Bahram', group: 'First Category' },
+               { id: '11', title: 'Hasan', group: 'First Category' },
+               { id: '12', title: 'Reza', group: 'Secend Category' },
+               { id: '13', title: 'Naser', group: 'First Category' },
+               { id: '14', title: 'Kamran', group: 'Secend Category' },
+               { id: '15', title: 'Bahram', group: 'First Category' }
+            ],
+            defaultValueId: '9',
+            placeHolder: 'Please Select',
+            search: true,
+            rtl: false   ,
+            onSelect: function (row) {
+               //console.log(row)
+            },
+            rowRender: () => {
+               return '<div class="row" data-row-id="{{id}}">{{title}}</div>';
+            }
+         });
 
 
-         // MisMis.scrollbar({
+         // Hashtag.scrollbar({
          //    element: document.getElementById('scroll-1'),
          //    scrollX: true,
          //    scrollY: false,
@@ -182,7 +186,7 @@
          //    rtl: false,
          // });
 
-         // MisMis.scrollbar({
+         // Hashtag.scrollbar({
          //    element: document.getElementById('scroll-2'),
          //    scrollX: false,
          //    scrollY: true,
@@ -190,7 +194,7 @@
          //    rtl: false,
          // });
 
-         // MisMis.scrollbar({
+         // Hashtag.scrollbar({
          //    element: document.getElementById('scroll-3'),
          //    scrollX: true,
          //    scrollY: true,
